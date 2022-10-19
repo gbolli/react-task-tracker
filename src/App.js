@@ -4,6 +4,7 @@ import AddTask from './components/AddTask'
 import { useState } from 'react'
 
 function App() {
+  const [showAddTask, setShowAddTask] = useState(false)
   const [idPool, setIdPool] = useState(4)
   const [tasks, setTasks] = useState([
     {
@@ -46,8 +47,8 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
-      <AddTask onAdd={addTask} />
+      <Header onAdd={() => setShowAddTask(!showAddTask)} />
+      {showAddTask && <AddTask onAdd={addTask} />}
       { tasks.length > 0 ? 
         (<Tasks 
             tasks={tasks} 
