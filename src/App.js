@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
-  const [idPool, setIdPool] = useState(4)
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
@@ -52,7 +51,6 @@ function App() {
       })
       const data = await res.json()
       setTasks(tasks.map(task => task.id === id ? { ...task, reminder: data.reminder} : task))
-      // setTasks(tasks.map(task => task.id === id ? task.reminder = { ...task, reminder: !task.reminder} : task))
   }
 
   // Add Task
